@@ -37,8 +37,12 @@ class StandaloneApplication(gunicorn.app.base.BaseApplication):
 
 def run_app():
     from server import create_app
+    import sys
+    port = '80'
+    if len(sys.argv) > 1 and str(sys.argv[1]).isdigit():
+        port = str(sys.argv[1])
     options = {
-        'bind': '%s:%s' % ('0.0.0.0', '8000'),
+        'bind': '%s:%s' % ('0.0.0.0', port),
         'workers': number_of_workers(),
         'worker_class': 'gevent',
         'timeout': 600,
