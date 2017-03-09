@@ -20,6 +20,7 @@ def in_data_dir(*path):
 API_VERSION = '0.1'
 ENABLE_CORS = True
 PROD = os.getenv('PROD') or False
+GUNICORN_WORKERS = os.getenv('GUNICORN_WORKERS')
 
 LOG_LEVEL = logging.INFO if PROD else logging.DEBUG
 

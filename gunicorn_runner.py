@@ -7,6 +7,8 @@ import multiprocessing
 import sys
 from os import path
 
+from settings import GUNICORN_WORKERS
+
 import gunicorn.app.base
 from gevent import monkey
 from gunicorn.six import iteritems
@@ -16,7 +18,7 @@ monkey.patch_all()
 
 
 def number_of_workers():
-    return multiprocessing.cpu_count() * 2
+    return GUNICORN_WORKERS or multiprocessing.cpu_count() * 2
 
 
 class StandaloneApplication(gunicorn.app.base.BaseApplication):
