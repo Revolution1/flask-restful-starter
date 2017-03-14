@@ -10,6 +10,16 @@ from datetime import datetime
 from inspect import getargspec
 
 
+def str2bool(v, default):
+    if v is None:
+        return default
+    if v.lower() in ('yes', 'true', 't', '1'):
+        return True
+    if v.lower() in ('no', 'false', 'f', '0'):
+        return False
+    return default
+
+
 def gen_random_str(length):
     return base64.b32encode(os.urandom(3 * length))[:length].lower()
 
