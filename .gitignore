@@ -94,6 +94,6 @@ ENV/
 ### Example user template
 
 # IntelliJ project files
-.idea
+.idea/
 out
 gen
