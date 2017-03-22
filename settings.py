@@ -2,6 +2,8 @@ import logging
 import os
 import sys
 
+from utils.functions import str2bool
+
 ERROR_404_HELP = False
 
 SECRET_KEY = os.getenv('SECRET_KEY') or 'flask_restful_starter'
@@ -19,7 +21,7 @@ def in_data_dir(*path):
 
 API_VERSION = '0.1'
 ENABLE_CORS = True
-PROD = os.getenv('PROD') or False
+PROD = str2bool(os.getenv('PROD'), False)
 GUNICORN_WORKERS = os.getenv('GUNICORN_WORKERS')
 
 LOG_LEVEL = logging.INFO if PROD else logging.DEBUG
